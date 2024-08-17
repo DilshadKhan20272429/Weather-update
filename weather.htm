@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        #weather {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Update</h1>
+    <input type="text" id="city" placeholder="Enter City">
+    <input type="text" id="state" placeholder="Enter State (optional)">
+    <button onclick="getWeather()">Get Weather</button>
+    <div id="weather"></div>
+
+    <script src="weather.js">
+	debugger;
+	async function getWeather() {
+    const city = document.getElementById('city').value;
+    const state = document.getElementById('state').value;
+    const apiKey = 'your_api_key'; // Replace this with your actual OpenWeatherMap API key
+
+    // Construct the API URL
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}`;
+    if (state) {
+        url += `,${state}`;
+    }
+    url += `&appid=${apiKey}&units=metric`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('City not found');
+        }
+        const data = await response.json();
+
+        // Display the weather
+        document.getElementById('weather').innerHTML = `
+            <h3>Weather in ${data.name}</h3>
+            <p>Temperature: ${data.main.temp}°C</p>
+            <p>Weather: ${data.weather[0].description}</p>
+            <p>Humidity: ${data.main.humidity}%</p>
+            <p>Wind Speed: ${data.wind.speed} m/s</p>
+        `;
+    } catch (error) {
+        document.getElementById('weather').innerHTML = `<p>${error.message}</p>`;
+    }
+}
+	</script>
+</body>
+</html>
