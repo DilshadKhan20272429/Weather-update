@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .display {
+            font-size: 2em;
+            margin-bottom: 10px;
+            padding: 10px;
+            text-align: right;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #e0e0e0;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .button {
+            padding: 20px;
+            font-size: 1.5em;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f9f9f9;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #e0e0e0;
+        }
+        .button.operator {
+            background: #ff9800;
+            color: white;
+        }
+        .button.operator:hover {
+            background: #fb8c00;
+        }
+        .button.double {
+            grid-column: span 2;
+        }
+        .button.clear {
+            background: #f44336;
+            color: white;
+        }
+        .button.clear:hover {
+            background: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+
+            <div class="button operator" onclick="appendOperator('/')">/</div>
+            <div class="button operator" onclick="appendOperator('*')">*</div>
+            <div class="button operator" onclick="appendOperator('-')">-</div>
+			<div class="button operator" onclick="appendOperator('+')">+</div>
+			
+             <div class="button" onclick="appendNumber('1')">1</div>
+            <div class="button" onclick="appendNumber('2')">2</div>
+            <div class="button" onclick="appendNumber('3')">3</div>
+            <div class="button" onclick="appendNumber('4')">4</div>
+            <div class="button" onclick="appendNumber('5')">5</div>
+            <div class="button" onclick="appendNumber('6')">6</div>
+			 <div class="button" onclick="appendNumber('7')">7</div>
+            <div class="button" onclick="appendNumber('8')">8</div>
+            <div class="button" onclick="appendNumber('9')">9</div>
+			<div class="button double" onclick="appendNumber('0')">0</div>
+           
+            <div class="button double operator" onclick="calculateResult()">=</div>
+			            <div class="button clear" onclick="clearDisplay()">C</div>
+           
+            
+            <div class="button" onclick="appendNumber('.')">.</div>
+        </div>
+    </div>
+
+    <script>
+        let currentInput = '';
+
+        function appendNumber(number) {
+            if (currentInput.length < 20) {
+                currentInput += number;
+                updateDisplay();
+            }
+        }
+
+        function appendOperator(operator) {
+            if (currentInput.length > 0 && !['+', '-', '*', '/'].includes(currentInput.slice(-1))) {
+                currentInput += operator;
+                updateDisplay();
+            }
+        }
+
+        function clearDisplay() {
+            currentInput = '';
+            updateDisplay();
+        }
+
+        function calculateResult() {
+            if (currentInput.trim() !== '') {
+        try {
+            currentInput = eval(currentInput).toString();
+        } catch {
+            currentInput = 'Error';
+        }
+    }
+    updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.getElementById('display').textContent = currentInput || '0';
+        }
+    </script>
+</body>
+</html>
