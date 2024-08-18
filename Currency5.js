@@ -1,5 +1,8 @@
 // Function to parse sentence and extract currency details
 function parseSentence(sentence) {
+    if (sentence.length === 0) {
+         displayMessage(" Dear You not proveded any input, "bot");
+    }
     const regex = /(\d+)\s*(\w{3})\s*(to|in)\s*(\w{3})/i;
     const match = sentence.match(regex);
 
