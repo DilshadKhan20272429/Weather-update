@@ -12,7 +12,7 @@ body {
 .chat-container {
     width: 360px;
     max-width: 100%;
-    background-color: moccasin;
+    background-color: peachpuff;
     border-radius: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     display: flex;
