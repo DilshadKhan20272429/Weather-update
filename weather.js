@@ -26,3 +26,20 @@ async function getWeather() {
         document.getElementById('weather').innerHTML = `<p>${error.message}</p>`;
     }
 }
+
+
+// Function to toggle the dropdown menu
+function toggleMenu() {
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+}
+
+// Close the menu if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.menu-icon')) {
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        if (dropdownMenu.style.display === "block") {
+            dropdownMenu.style.display = "none";
+        }
+    }
+};
