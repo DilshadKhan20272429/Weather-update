@@ -1,6 +1,5 @@
 // Function to parse sentence and extract currency details
 function parseSentence(sentence) {
-   
     const regex = /(\d+)\s*(\w{3})\s*(to|in)\s*(\w{3})/i;
     const match = sentence.match(regex);
 
