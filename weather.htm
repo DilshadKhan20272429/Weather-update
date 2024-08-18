@@ -89,8 +89,13 @@
     </style>
 
 </head>
-<body>
-    <h1>Weather Update</h1>
+<body><div class="menu-icon" onclick="toggleMenu()">
+                &#x22EE;
+            </div>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <a href="dashboard.htm" style="color: white;"> Goto Dashboard</a>
+            </div>
+    <h1>Weather Update</h1> 
     <input type="text" id="city" placeholder="Enter City">
     <input type="text" id="state" placeholder="Enter State (optional)">
     <button onclick="getWeather()">Get Weather</button>
