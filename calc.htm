@@ -8,6 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -64,33 +65,38 @@
         .button.clear:hover {
             background: #e53935;
         }
+        .dashboard-link {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: yellow;
+            text-decoration: none;
+        }
+        .dashboard-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
-<body>   <a href="dashboard.htm" style="color: Yellow;"> Goto Dashboard</a>
+<body>
+    <a href="dashboard.htm" class="dashboard-link">Goto Dashboard</a>
     <div class="calculator">
         <div class="display" id="display">0</div>
         <div class="buttons">
-
             <div class="button operator" onclick="appendOperator('/')">/</div>
             <div class="button operator" onclick="appendOperator('*')">*</div>
             <div class="button operator" onclick="appendOperator('-')">-</div>
-			<div class="button operator" onclick="appendOperator('+')">+</div>
-			
-             <div class="button" onclick="appendNumber('1')">1</div>
+            <div class="button operator" onclick="appendOperator('+')">+</div>
+            <div class="button" onclick="appendNumber('1')">1</div>
             <div class="button" onclick="appendNumber('2')">2</div>
             <div class="button" onclick="appendNumber('3')">3</div>
             <div class="button" onclick="appendNumber('4')">4</div>
             <div class="button" onclick="appendNumber('5')">5</div>
             <div class="button" onclick="appendNumber('6')">6</div>
-			 <div class="button" onclick="appendNumber('7')">7</div>
+            <div class="button" onclick="appendNumber('7')">7</div>
             <div class="button" onclick="appendNumber('8')">8</div>
             <div class="button" onclick="appendNumber('9')">9</div>
-			<div class="button double" onclick="appendNumber('0')">0</div>
-           
+            <div class="button double" onclick="appendNumber('0')">0</div>
             <div class="button double operator" onclick="calculateResult()">=</div>
-			            <div class="button clear" onclick="clearDisplay()">C</div>
-           
-            
+            <div class="button clear" onclick="clearDisplay()">C</div>
             <div class="button" onclick="appendNumber('.')">.</div>
         </div>
     </div>
@@ -119,13 +125,13 @@
 
         function calculateResult() {
             if (currentInput.trim() !== '') {
-        try {
-            currentInput = eval(currentInput).toString();
-        } catch {
-            currentInput = 'Error';
-        }
-    }
-    updateDisplay();
+                try {
+                    currentInput = eval(currentInput).toString();
+                } catch {
+                    currentInput = 'Error';
+                }
+            }
+            updateDisplay();
         }
 
         function updateDisplay() {
