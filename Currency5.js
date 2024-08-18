@@ -1,6 +1,8 @@
 // Function to parse sentence and extract currency details
 function parseSentence(sentence) {
-    
+    if (sentence.length === 0) {
+         displayMessage(" Dear You not proveded any input, "bot");
+    }
     const regex = /(\d+)\s*(\w{3})\s*(to|in)\s*(\w{3})/i;
     const match = sentence.match(regex);
 
@@ -52,7 +54,6 @@ function displayLoader(show) {
 // Function to handle user input and bot responses
 async function processInput() {
     const userInput = document.getElementById("userInput").value;
-   
     displayMessage(userInput, "user");
     displayLoader(true); // Show loader
 
