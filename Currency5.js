@@ -52,8 +52,7 @@ function displayLoader(show) {
 // Function to handle user input and bot responses
 async function processInput() {
     const userInput = document.getElementById("userInput").value;
-    if (sentence.length !== 0) {
-    
+   
     displayMessage(userInput, "user");
     displayLoader(true); // Show loader
 
@@ -77,7 +76,6 @@ async function processInput() {
     }, 5000); // Simulate 5 seconds response time
 
     document.getElementById("userInput").value = "";
-}
 }
 
 // Function to handle pressing Enter key
